@@ -1,6 +1,1 @@
-# كود لإظهار محتوى ads.txt برمجياً
-import os
-
-# إذا طلب جوجل الرابط، سيظهر له النص المطلوب
-if st.button("إظهار تصريح AdSense"):
-    st.code("google.com, pub-9614186560098079, DIRECT, f08c47fec0942fa0")
+google.com, pub-9614186560098079, DIRECT, f08c47fec0942fa0
