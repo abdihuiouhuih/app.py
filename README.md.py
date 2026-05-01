@@ -1,18 +1,19 @@
 import streamlit as st
-import streamlit.components.v1 as components
+import streamlit.components.v1 as components # تأكد من إضافة هذا السطر
 
-# كود إثبات الملكية الخاص بك من AdSense
-adsense_verification = """
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9614186560098079"
-     crossorigin="anonymous"></script>
+# 1. ضع كود التحقق هنا (السطر رقم 4 أو 5)
+# هذا الكود يخبر جوجل أن الموقع ملكك
+verification_tag = """
+<meta name="google-adsense-account" content="ca-pub-9614186560098079">
 """
+components.html(verification_tag, height=0) # height=0 عشان ما يخرب شكل التصميم
 
-# حقن الكود في الموقع (يتم وضعه بارتفاع 0 ليكون مخفياً عن المستخدم ومتاحاً لجوجل)
-components.html(adsense_verification, height=0)
+# 2. إعدادات الصفحة الأصلية
+st.set_page_config(page_title="مخطط الدايت الذكي", page_icon="⚖️")
 
-# استكمال واجهة تطبيقك
-st.title("تطبيق حساب السعرات وتوقع خسارة الوزن")
-# ... باقي كود الحسابات الخاص بك
+# 3. باقي كود التطبيق اللي سويناه سوا
+st.title("🏃‍♂️ تطبيق حساب السعرات وتوقع خسارة الوزن")
+# ... كمل باقي الكود حقك بشكل طبيعي
 import streamlit as st
 
 # إعدادات الصفحة
