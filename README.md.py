@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 
 # 1. كود إثبات الملكية لجوجل أدسنس (يجب أن يكون في البداية)
 adsense_meta = """
-<meta name="google-adsense-account" content="ca-pub-9614186560098079">
+<google.com, pub-9614186560098079, DIRECT, f08c47fec0942fa0>
 """
 components.html(adsense_meta, height=0)
 
