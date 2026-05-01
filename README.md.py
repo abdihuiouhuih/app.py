@@ -1,16 +1,5 @@
 import streamlit as st
 
-# جعل كود التصريح ظاهراً بشكل دائم في أعلى الصفحة
-st.code("google.com, pub-9614186560098079, DIRECT, f08c47fec0942fa0")
-
-# إعدادات الصفحة الأصلية
-st.set_page_config(page_title="مخطط الدايت الذكي", page_icon="⚖️")
-
-# عنوان التطبيق
-st.title("🏃‍♂️ تطبيق حساب السعرات وتوقع خسارة الوزن")
-# ... باقي الكود الخاص 
-import streamlit as st
-
 # إعدادات الصفحة
 st.set_page_config(page_title="مخطط الدايت الذكي", page_icon="⚖️")
 
