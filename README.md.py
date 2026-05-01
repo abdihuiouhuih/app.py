@@ -1,8 +1,3 @@
-# كود لإظهار محتوى ads.txt داخل واجهة التطبيق
-import streamlit as st
-
-if st.button("إظهار تصريح AdSense"):
-    st.code("google.com, pub-9614186560098079, DIRECT, f08c47fec0942fa0")
 import streamlit as st
 
 # إعدادات الصفحة
