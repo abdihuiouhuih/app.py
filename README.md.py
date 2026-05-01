@@ -1,4 +1,18 @@
 import streamlit as st
+import streamlit.components.v1 as components
+
+# انسخ الكود من الصورة وضعه هنا داخل المتغير
+verification_code = """
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9614186560098079"
+     crossorigin="anonymous"></script>
+"""
+
+# تنفيذ الكود ليظهر في الموقع
+components.html(verification_code, height=0)
+
+# تكملة كود تطبيقك الأصلي...
+st.title("تطبيق حساب السعرات وتوقع خسارة الوزن")
+import streamlit as st
 
 # إعدادات الصفحة
 st.set_page_config(page_title="مخطط الدايت الذكي", page_icon="⚖️")
