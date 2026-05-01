@@ -1,24 +1,16 @@
 import streamlit as st
-import streamlit.components.v1 as components # تأكد من إضافة هذا السطر
+import streamlit.components.v1 as components
 
-# 1. ضع كود التحقق هنا (السطر رقم 4 أو 5)
-# هذا الكود يخبر جوجل أن الموقع ملكك
-verification_tag = """
+# 1. كود إثبات الملكية لجوجل أدسنس (يجب أن يكون في البداية)
+adsense_meta = """
 <meta name="google-adsense-account" content="ca-pub-9614186560098079">
 """
-components.html(verification_tag, height=0) # height=0 عشان ما يخرب شكل التصميم
+components.html(adsense_meta, height=0)
 
-# 2. إعدادات الصفحة الأصلية
+# 2. إعدادات الصفحة
 st.set_page_config(page_title="مخطط الدايت الذكي", page_icon="⚖️")
 
-# 3. باقي كود التطبيق اللي سويناه سوا
-st.title("🏃‍♂️ تطبيق حساب السعرات وتوقع خسارة الوزن")
-# ... كمل باقي الكود حقك بشكل طبيعي
-import streamlit as st
-
-# إعدادات الصفحة
-st.set_page_config(page_title="مخطط الدايت الذكي", page_icon="⚖️")
-
+# 3. واجهة التطبيق
 st.title("🏃‍♂️ تطبيق حساب السعرات وتوقع خسارة الوزن")
 st.write("أدخل بياناتك للحصول على خطة مخصصة")
 
@@ -54,10 +46,10 @@ maintenance_calories = bmr * activity_multipliers[activity]
 
 st.divider()
 
-# حسابات الدايت (بناءً على عجز 500 سعرة يومياً لخسارة صحية)
+# حسابات الدايت (بناءً على عجز 500 سعرة يومياً)
 daily_deficit = 500 
 diet_calories = maintenance_calories - daily_deficit
-total_loss_kg = (daily_deficit * target_period) / 7700  # كل 7700 سعرة عجز تساوي تقريباً 1 كجم
+total_loss_kg = (daily_deficit * target_period) / 7700 
 
 st.header("📊 النتائج المتوقعة")
 c1, c2, c3 = st.columns(3)
@@ -65,9 +57,18 @@ c1.metric("سعرات المحافظة", f"{int(maintenance_calories)}")
 c2.metric("سعرات الدايت", f"{int(diet_calories)}")
 c3.metric("الخسارة المتوقعة", f"{total_loss_kg:.2f} كجم")
 
-st.info(f"💡 إذا استمريت لمدة **{target_period}** يوم على **{int(diet_calories)}** سعرة، يتوقع أن يصبح وزنك **{weight - total_loss_kg:.2f}** كجم.")
+st.info(f"💡 إذا استمريت لمدة **{target_period}** يوم، يتوقع أن يصبح وزنك **{weight - total_loss_kg:.2f}** كجم.")
 
-# قسم تقييم التجربة
+# 4. قسم "قيمة مضافة" لزيادة فرص قبول جوجل (نصوص مفيدة)
+st.divider()
+st.subheader("📝 نصائح صحية من أجل دايت ناجح")
+st.write("""
+*   **شرب الماء:** تأكد من شرب 2-3 لتر يومياً لتحسين عملية الأيض.
+*   **البروتين:** احرص على تناول كمية كافية من البروتين للحفاظ على الكتلة العضلية.
+*   **النوم:** النوم الكافي يساعد جسمك على حرق الدهون بشكل أسرع.
+""")
+
+# 5. قسم تقييم التجربة
 st.divider()
 st.header("📉 سجل نتائجك وقيم تجربتك")
 old_weight = st.number_input("الوزن عند البداية", value=weight)
@@ -76,8 +77,10 @@ current_actual_weight = st.number_input("الوزن الحالي بعد التج
 if st.button("احسب صافي الخسارة"):
     diff = old_weight - current_actual_weight
     if diff > 0:
-        st.success(f"كفو! لقد خسرت {diff:.2f} كجم. استمر في الإبداع! 🔥")
-    elif diff < 0:
-        st.warning(f"هناك زيادة {abs(diff):.2f} كجم. راجع نظامك الغذائي، أنت تستطيع فعلها! 💪")
+        st.success(f"كفو يا بطل! لقد خسرت {diff:.2f} كجم. استمر! 🔥")
     else:
-        st.info("الوزن ثابت، حاول زيادة النشاط البدني.")
+        st.info("الوزن ثابت، حاول زيادة نشاطك البدني قليلاً.")
+
+# 6. تذييل الصفحة (Footer) - مهم جداً لمتطلبات جوجل
+st.markdown("---")
+st.caption("حقوق النشر © 2026 - تطبيق عبدالله الذكي للصحة")
