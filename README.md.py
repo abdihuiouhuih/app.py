@@ -1,17 +1,18 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# انسخ الكود من الصورة وضعه هنا داخل المتغير
-verification_code = """
+# كود إثبات الملكية الخاص بك من AdSense
+adsense_verification = """
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9614186560098079"
      crossorigin="anonymous"></script>
 """
 
-# تنفيذ الكود ليظهر في الموقع
-components.html(verification_code, height=0)
+# حقن الكود في الموقع (يتم وضعه بارتفاع 0 ليكون مخفياً عن المستخدم ومتاحاً لجوجل)
+components.html(adsense_verification, height=0)
 
-# تكملة كود تطبيقك الأصلي...
+# استكمال واجهة تطبيقك
 st.title("تطبيق حساب السعرات وتوقع خسارة الوزن")
+# ... باقي كود الحسابات الخاص بك
 import streamlit as st
 
 # إعدادات الصفحة
