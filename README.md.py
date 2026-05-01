@@ -1,16 +1,13 @@
+# كود لإظهار محتوى ads.txt داخل واجهة التطبيق
 import streamlit as st
-import streamlit.components.v1 as components
 
-# 1. كود إثبات الملكية لجوجل أدسنس (يجب أن يكون في البداية)
-adsense_meta = """
-<google.com, pub-9614186560098079, DIRECT, f08c47fec0942fa0>
-"""
-components.html(adsense_meta, height=0)
+if st.button("إظهار تصريح AdSense"):
+    st.code("google.com, pub-9614186560098079, DIRECT, f08c47fec0942fa0")
+import streamlit as st
 
-# 2. إعدادات الصفحة
+# إعدادات الصفحة
 st.set_page_config(page_title="مخطط الدايت الذكي", page_icon="⚖️")
 
-# 3. واجهة التطبيق
 st.title("🏃‍♂️ تطبيق حساب السعرات وتوقع خسارة الوزن")
 st.write("أدخل بياناتك للحصول على خطة مخصصة")
 
@@ -46,10 +43,10 @@ maintenance_calories = bmr * activity_multipliers[activity]
 
 st.divider()
 
-# حسابات الدايت (بناءً على عجز 500 سعرة يومياً)
+# حسابات الدايت (بناءً على عجز 500 سعرة يومياً لخسارة صحية)
 daily_deficit = 500 
 diet_calories = maintenance_calories - daily_deficit
-total_loss_kg = (daily_deficit * target_period) / 7700 
+total_loss_kg = (daily_deficit * target_period) / 7700  # كل 7700 سعرة عجز تساوي تقريباً 1 كجم
 
 st.header("📊 النتائج المتوقعة")
 c1, c2, c3 = st.columns(3)
@@ -57,18 +54,9 @@ c1.metric("سعرات المحافظة", f"{int(maintenance_calories)}")
 c2.metric("سعرات الدايت", f"{int(diet_calories)}")
 c3.metric("الخسارة المتوقعة", f"{total_loss_kg:.2f} كجم")
 
-st.info(f"💡 إذا استمريت لمدة **{target_period}** يوم، يتوقع أن يصبح وزنك **{weight - total_loss_kg:.2f}** كجم.")
+st.info(f"💡 إذا استمريت لمدة **{target_period}** يوم على **{int(diet_calories)}** سعرة، يتوقع أن يصبح وزنك **{weight - total_loss_kg:.2f}** كجم.")
 
-# 4. قسم "قيمة مضافة" لزيادة فرص قبول جوجل (نصوص مفيدة)
-st.divider()
-st.subheader("📝 نصائح صحية من أجل دايت ناجح")
-st.write("""
-*   **شرب الماء:** تأكد من شرب 2-3 لتر يومياً لتحسين عملية الأيض.
-*   **البروتين:** احرص على تناول كمية كافية من البروتين للحفاظ على الكتلة العضلية.
-*   **النوم:** النوم الكافي يساعد جسمك على حرق الدهون بشكل أسرع.
-""")
-
-# 5. قسم تقييم التجربة
+# قسم تقييم التجربة
 st.divider()
 st.header("📉 سجل نتائجك وقيم تجربتك")
 old_weight = st.number_input("الوزن عند البداية", value=weight)
@@ -77,10 +65,8 @@ current_actual_weight = st.number_input("الوزن الحالي بعد التج
 if st.button("احسب صافي الخسارة"):
     diff = old_weight - current_actual_weight
     if diff > 0:
-        st.success(f"كفو يا بطل! لقد خسرت {diff:.2f} كجم. استمر! 🔥")
+        st.success(f"كفو! لقد خسرت {diff:.2f} كجم. استمر في الإبداع! 🔥")
+    elif diff < 0:
+        st.warning(f"هناك زيادة {abs(diff):.2f} كجم. راجع نظامك الغذائي، أنت تستطيع فعلها! 💪")
     else:
-        st.info("الوزن ثابت، حاول زيادة نشاطك البدني قليلاً.")
-
-# 6. تذييل الصفحة (Footer) - مهم جداً لمتطلبات جوجل
-st.markdown("---")
-st.caption("حقوق النشر © 2026 - تطبيق عبدالله الذكي للصحة")
+        st.info("الوزن ثابت، حاول زيادة النشاط البدني.")
