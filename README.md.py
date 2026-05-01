@@ -1,5 +1,19 @@
 import streamlit as st
 
+# 1. قسم تصريح AdSense (يظهر كزر داخل التطبيق)
+if st.button("إظهار تصريح AdSense"):
+    st.code("google.com, pub-9614186560098079, DIRECT, f08c47fec0942fa0")
+
+# 2. إعدادات الصفحة
+st.set_page_config(page_title="مخطط الدايت الذكي", page_icon="⚖️")
+
+# 3. واجهة التطبيق
+st.title("🏃‍♂️ تطبيق حساب السعرات وتوقع خسارة الوزن")
+st.write("أدخل بياناتك للحصول على خطة مخصصة")
+
+# ... تكملة باقي الكود حقك
+import streamlit as st
+
 # إعدادات الصفحة
 st.set_page_config(page_title="مخطط الدايت الذكي", page_icon="⚖️")
 
